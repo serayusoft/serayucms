@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Default Theme</title>
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="{{URL::to('/')}}/assets/fontawesome/css/font-awesome.min.css">
+    {{--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">--}}
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="{{URL::to('/')}}/assets/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{URL::to('/themes/smallpine')}}/css/style.css">
+    {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
+    @stack('style-top')
+    <style>
+        body {
+            font-family: 'Lato';
+        }
+
+        .fa-btn {
+            margin-right: 6px;
+        }
+    </style>
+</head>
+<body id="app-layout">
+    <header id="sr-header">
+        <div class="topbar fixed">
+            <div class="container">
+                <div class="pull-left">
+                    <nav class="nav-wrapper">
+                        <div class="mobile-menu">
+                            <a class="togole-mainmenu" href="javascript:void(0)"><i class="fa fa-bars"></i></a>
+                        </div>
+                        <ul id="menu-main-menu" class="sr-mainmenu">
+                            {!!html_entity_decode(Theme::menu("menu-top"))!!}
+                        </ul>                    
+                    </nav>
+                </div>
+                <div class="pull-right">
+                    <div class="social">
+                        <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>                      <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>                       <a href="#" target="_blank"><i class="fa fa-instagram"></i></a>                     <a href="#" target="_blank"><i class="fa fa-pinterest"></i></a>                     <a href="#" target="_blank"><i class="fa fa-heart"></i></a>                                                                                                                                                                 </div>
+                </div>
+            </div>
+        </div>
+        <div class="logo-ads">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-md-offset-4">
+                        <div class="site-branding">
+                            <h1 class="site-logo">
+                                <a href="{{ url('/') }}">
+                                    <img src="{{Theme::option('general','logo')}}" alt="serayutheme" width="300">
+                                </a>
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+   
