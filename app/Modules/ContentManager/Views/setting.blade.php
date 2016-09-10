@@ -8,7 +8,8 @@
       <div class="clearfix"></div>
     </div>
     <div class="x_content">
-      <form>
+      <form action="Admin::route('contentManager.setting.update')" method="POST">
+        {{ csrf_field() }}
         <div class="" role="tabpanel" data-example-id="togglable-tabs">
             <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
               <li role="presentation" class="active"><a href="#tab_content1" id="general-tab" role="tab" data-toggle="tab" aria-expanded="true">Home</a>
@@ -23,22 +24,84 @@
                   
                   <div class="form-group">
                     <label for="site-title">Site Title</label>
-                    <input type="text" name="site_title" class="form-control" value="{{ $model['site_title'] }}" id="site-title" placeholder="Site Title">
+                    <input type="text" name="opt[site_title]" class="form-control" value="{{ $model['site_title'] }}" id="site-title" placeholder="Site Title">
                   </div>
                   <div class="form-group">
                     <label for="site-tagline">Site Tagline</label>
-                    <input type="text" name="site_tagline" class="form-control" value="{{ $model['site_tagline'] }}" id="site-tagline" placeholder="Site Tagline">
+                    <input type="text" name="opt[site_tagline]" class="form-control" value="{{ $model['site_tagline'] }}" id="site-tagline" placeholder="Site Tagline">
+                  </div>
+                  <div class="form-group">
+                    <label for="email_administrator">Email Administrator</label>
+                    <input type="text" name="opt[email_administrator]" class="form-control" value="{{ $model['email_administrator'] }}" id="email_administrator" placeholder="Email Administrator">
                   </div>
                   <button type="submit" class="btn btn-default">Submit</button>
                 
               </div>
               <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="post-tab">
-                <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo
-                  booth letterpress, commodo enim craft beer mlkshk aliquip</p>
+
+                <div class="form-group">
+                    <label for="frontpage_blog">Post On Frontpage</label>
+                    <select class="form-control" name="opt[frontpage_blog]" id="frontpage_blog">
+                      <option {{ ($model['frontpage_blog'] == "0") ? "selected" : "" }} value="0">False</option>
+                      <option {{ ($model['frontpage_blog'] == "1") ? "selected" : "" }} value="1">True</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="view_post_index">Post View</label>
+                    <input type="text" name="opt[view_post_index]" class="form-control" value="{{ $model['view_post_index'] }}" id="view_post_index" placeholder="Site Tagline">
+                  </div>
+                  <button type="submit" class="btn btn-default">Submit</button>
+
               </div>
               <div role="tabpanel" class="tab-pane fade" id="tab_content3" aria-labelledby="media-tab">
-                <p>xxFood truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo
-                  booth letterpress, commodo enim craft beer mlkshk </p>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="image_thumbnail_width">Thumbnail Width</label>
+                      <input type="text" name="opt[image_thumbnail_width]" class="form-control" value="{{ $model['image_thumbnail_width'] }}" id="image_thumbnail_width" placeholder="Site Title">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="image_thumbnail_height">Thumbnail Height</label>
+                      <input type="text" name="opt[image_thumbnail_height]" class="form-control" value="{{ $model['image_thumbnail_height'] }}" id="image_thumbnail_height" placeholder="Site Tagline">
+                    </div> 
+                  </div>  
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="image_medium_width">Medium Width</label>
+                      <input type="text" name="opt[image_medium_width]" class="form-control" value="{{ $model['image_medium_width'] }}" id="image_medium_width" placeholder="Site Title">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="image_medium_height">Medium Height</label>
+                      <input type="text" name="opt[image_medium_height]" class="form-control" value="{{ $model['image_medium_height'] }}" id="image_medium_height" placeholder="Site Tagline">
+                    </div> 
+                  </div>  
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="image_large_width">Large Width</label>
+                      <input type="text" name="opt[image_large_width]" class="form-control" value="{{ $model['image_large_width'] }}" id="image_large_width" placeholder="Site Title">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="image_large_height">Large Height</label>
+                      <input type="text" name="opt[image_large_height]" class="form-control" value="{{ $model['image_large_height'] }}" id="image_large_height" placeholder="Site Tagline">
+                    </div> 
+                  </div>  
+                </div>
+                
+                
+                  <button type="submit" class="btn btn-default">Submit</button>
+
               </div>
             </div>
           </div>

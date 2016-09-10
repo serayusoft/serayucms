@@ -2,5 +2,5 @@
 
 return [
 	'active'=>'smallpine',
-	'driver'=>'database', //---file or database
+	'driver'=>'file', //---file or database
 ];

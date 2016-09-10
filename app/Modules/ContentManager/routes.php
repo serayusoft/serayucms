@@ -33,6 +33,7 @@ Route::group(['prefix' => $this->admin, 'middleware' => ['web','admin'], 'namesp
 
 	//-----Setting-----
 	Route::get('contentManager/setting', ['as' => $this->admin.'.contentManager.setting', 'uses' => 'OptionsController@index']);
+	Route::post('contentManager/setting', ['as' => $this->admin.'.contentManager.setting.update', 'uses' => 'OptionsController@update']);
 
 	//-----widget Manager------
 	Route::get('contentManager/widget', ['as' => $this->admin.'.contentManager.widget', 'uses' => 'WidgetController@index']);
