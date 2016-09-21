@@ -7,15 +7,8 @@
     "require": {
         "php": ">=5.5.9",
         "laravel/framework": "5.2.*",
-        "laravel/socialite": "^2.0",
-        "cartalyst/themes": "3.0.*"
+        "laravel/socialite": "^2.0"
     },
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://packages.cartalyst.com"
-        }
-    ],
     "require-dev": {
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
