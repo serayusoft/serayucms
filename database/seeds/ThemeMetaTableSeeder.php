@@ -20,7 +20,7 @@ class ThemeMetaTableSeeder extends Seeder
                         [
                             'name'=>'logo',
                             'type'=>'imageupload',
-                            'value'=>'Default Theme',
+                            'value'=>'',
                             'label'=>'Logo',
                             'group'=>'general'
                         ],
@@ -99,7 +99,7 @@ class ThemeMetaTableSeeder extends Seeder
                 'theme_id' => 1,
                 'meta_group' => 'menu_position',
                 'meta_key' => 'menu-top',
-                'meta_value' => '',
+                'meta_value' => 'main-menu',
             ],
             [
                 'theme_id' => 1,

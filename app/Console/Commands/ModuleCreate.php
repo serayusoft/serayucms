@@ -79,8 +79,6 @@ class ModuleCreate extends Command
 
         $this->makeDirectory($modulePath);
 
-        $this->files->put($modulePath."/routes.php", "");
-
         $this->info('Module created successfully.');
     }
 

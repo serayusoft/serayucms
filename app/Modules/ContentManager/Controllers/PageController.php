@@ -8,6 +8,7 @@ use App\Modules\ContentManager\Models\Terms;
 use App\Modules\ContentManager\Models\TermRelationships;
 use App\Http\Controllers\Controller;
 use Admin;
+use Theme;
 class PageController extends Controller
 {
     /**
@@ -70,7 +71,7 @@ class PageController extends Controller
     {
         $model = Articles::where("post_name",$slug)->where("post_type","page")->where('post_status','publish')->firstOrFail();
         $viewTheme = Theme::active().'.page.view';
-        return view()->exists($viewTheme) ? view($viewTheme,['model'=>$model]) : view("ContentManager::page.show",['model'=>$model]);
+        return view()->exists($viewTheme) ? view($viewTheme,['model'=>$model,'appTitle'=>$model->post_title]) : view("ContentManager::page.show",['model'=>$model,'appTitle'=>$model->post_title]);
     }
 
     /**

@@ -32,6 +32,11 @@ class ModulesServiceProvider extends \Illuminate\Support\ServiceProvider
             if(is_dir(__DIR__.'/'.$module.'/Views')) {
                 $this->loadViewsFrom(__DIR__.'/'.$module.'/Views', $module);
             }
+            if(is_dir(__DIR__.'/'.$module.'/Database')) {
+                $this->publishes([
+                    __DIR__.'/'.$module.'/Database/' => database_path('/migrations')
+                ], 'migrations');
+            }
         }
     }
 

@@ -89,7 +89,7 @@ class PostController extends Controller
     {
         $model = Articles::where("post_name",$slug)->where("post_type","post")->where('post_status','publish')->firstOrFail();
         $viewTheme = Theme::active().'.post.view';
-        return view()->exists($viewTheme) ? view($viewTheme,['model'=>$model]) : view("ContentManager::post.show",['model'=>$model]);
+        return view()->exists($viewTheme) ? view($viewTheme,['model'=>$model,'appTitle'=>$model->post_title]) : view("ContentManager::post.show",['model'=>$model,'appTitle'=>$model->post_title]);
     }
 
     /**

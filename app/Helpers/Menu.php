@@ -58,7 +58,10 @@ class Menu{
                 break;
             case 'custom':
                 $res = $model->getMetaValue('_nav_item_url');
-                break;    
+                break;
+            case 'page':
+                $res = $model->post_name.'.html';
+                break;        
             
             default:
                 $res = $model->post_name;

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Default Theme</title>
+    <title>{{Helper::appTitle($appTitle)}}</title>
 
     <!-- Fonts -->
     <link rel="stylesheet" href="{{URL::to('/')}}/assets/fontawesome/css/font-awesome.min.css">
@@ -14,6 +14,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{URL::to('/')}}/assets/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{URL::to('/themes/smallpine')}}/css/style.css">
+    
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
     @stack('style-top')
     <style>
@@ -26,7 +27,8 @@
         }
     </style>
 </head>
-<body id="app-layout">
+<body id="app-layout" class="home blog custom-background hfeed CStyle8 SStyle1 HStyle1 boxed">
+    <div id="page" class="site">
     <header id="sr-header">
         <div class="topbar fixed">
             <div class="container">
@@ -42,8 +44,13 @@
                 </div>
                 <div class="pull-right">
                     <div class="social">
-                        <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>                      <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>                       <a href="#" target="_blank"><i class="fa fa-instagram"></i></a>                     <a href="#" target="_blank"><i class="fa fa-pinterest"></i></a>                     <a href="#" target="_blank"><i class="fa fa-heart"></i></a>                                                                                                                                                                 </div>
-                </div>
+                        <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>                      
+                        <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>                       
+                        <a href="#" target="_blank"><i class="fa fa-instagram"></i></a>                     
+                        <a href="#" target="_blank"><i class="fa fa-pinterest"></i></a>                     
+                        <a href="#" target="_blank"><i class="fa fa-heart"></i></a> 
+                    </div> 
+                </div> 
             </div>
         </div>
         <div class="logo-ads">
@@ -53,7 +60,12 @@
                         <div class="site-branding">
                             <h1 class="site-logo">
                                 <a href="{{ url('/') }}">
-                                    <img src="{{Theme::option('general','logo')}}" alt="serayutheme" width="300">
+                                    @if(Theme::option('general','logo') != "")
+                                        <img src="{{Theme::option('general','logo')}}" alt="serayutheme" width="300">
+                                    @else
+                                        {{ Helper::option("site_title") }}
+                                        <p class="site-description">{{ Helper::option("site_tagline") }}</p>
+                                    @endif
                                 </a>
                             </h1>
                         </div>
@@ -62,4 +74,5 @@
             </div>
         </div>
     </header>
-   
+    <div id="content" class="site-content">
+        <div class="container">

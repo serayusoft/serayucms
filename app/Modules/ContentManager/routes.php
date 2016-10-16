@@ -5,6 +5,7 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get($this->admin.'/logout',['as' => $this->admin.'.logout', 'uses' => 'App\Modules\ContentManager\Controllers\AuthController@logout']);
 
 	Route::get('/blog', 'App\Modules\ContentManager\Controllers\PostController@blog');
+	Route::get('/{slug?}.html', 'App\Modules\ContentManager\Controllers\PageController@show');
 	Route::get('/{slug?}', 'App\Modules\ContentManager\Controllers\PostController@show');
 	Route::post('/{slug?}/addcomment', 'App\Modules\ContentManager\Controllers\PostController@addcomment');
 	Route::get('/category/{slug?}', 'App\Modules\ContentManager\Controllers\CategoryController@show');
@@ -44,7 +45,7 @@ Route::group(['prefix' => $this->admin, 'middleware' => ['web','admin'], 'namesp
 
 	//-----post,page,category,tag,user------
 	Route::resource('contentManager/post', 'PostController',['except' => ['show']]);
-	Route::resource('contentManager/page', 'PageController');	
+	Route::resource('contentManager/page', 'PageController',['except' => ['show']]);
 	Route::resource('contentManager/category', 'CategoryController',['except' => ['show','create']]);
 	Route::resource('contentManager/tag', 'TagController',['except' => ['show','create']]);
 	Route::resource('contentManager/user', 'UsersController');	

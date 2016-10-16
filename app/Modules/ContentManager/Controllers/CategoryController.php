@@ -64,9 +64,9 @@ class CategoryController extends Controller
     {
         $model = Terms::where("slug",$slug)->where('taxonomy','category')->firstOrFail();
         if (view()->exists(Theme::active().'.post.archive')) {
-            return view(Theme::active().'.post.archive',['model'=>$model]);
+            return view(Theme::active().'.post.archive',['model'=>$model->posts()->paginate(10),'appTitle'=>$model->name]);
         }else{
-            return view("ContentManager::category.show",['model'=>$model]);
+            return view("ContentManager::category.show",['model'=>$model,'appTitle'=>$model->name]);
         }
     }
 

@@ -1,20 +1,14 @@
 @extends(Theme::active().'.mainfront')
 
 @section('content')
-<div class="row">
-    <div class="col-md-12">
-    	{{ Widget::group('post_slider') }}
-    </div>
-    <div class="col-md-8">
-    	<div class="panel panel-default">
-            <div class="panel-heading">This Is Default Theme</div>
+<div class="row row-content">
+	<div class="col-md-12">
+		@foreach($blog as $data)
+		@include(Theme::active().'.post._view')
+		@endforeach	
 
-            <div class="panel-body">
-                Your Application's Landing Page. 
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4"></div>
+		{{ $blog->links() }}
+	</div>
 </div>
 @endsection
 
@@ -27,24 +21,29 @@
 	$(document).ready(function(){
 	  $('.post-slider').owlCarousel({
 		    center: true,
-		    loop:true,
-		    margin:10,
-		    responsiveClass:true,
-		    items:5,
-		    responsive:{
-		        0:{
-		            items:1
-		        },
-		        600:{
-		            items:2
-		        },
-		        1000:{
-		            items:2
-		        }
-		    },	   
-		    autoplay:true,
-		    autoplayTimeout:3000,
-		    autoplayHoverPause:true
+	        loop:true,
+	        margin:10,
+	        responsiveClass:true,
+	        items:5,
+	        controlsClass:'sr-slider-post-control',
+	        navContainerClass:'sr-slider-post-nav',
+	        navClass:["sr-slider-post-prev","sr-slider-post-next"],
+	        responsive:{
+	            0:{
+	                items:1
+	            },
+	            600:{
+	                items:1
+	            },
+	            1000:{
+	                items:2
+	            }
+	        },     
+	        autoplay:true,
+	        navText:["<i class='fa fa-chevron-left'></i>","<i class='fa fa-chevron-right'></i>"],
+	        autoplayTimeout:3000,
+	        nav:true,
+	        autoplayHoverPause:true
 		});
 	});	
 </script>

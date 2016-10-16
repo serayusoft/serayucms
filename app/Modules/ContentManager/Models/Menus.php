@@ -50,7 +50,10 @@ class Menus extends Model
                 break;
             case 'custom':
                 $res = $this->getMetaValue('_nav_item_url');
-                break;    
+                break; 
+            case 'page':
+                $res = url('/'.$this->post_name.'.html');
+                break;        
             
             default:
                 $res = url('/'.$this->post_name);

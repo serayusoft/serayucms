@@ -6,6 +6,8 @@
         @foreach($model->posts as $data)
         @include(Theme::active().'.post._view')
         @endforeach
+
+        {{ $model->posts->links() }}
     </div>
 </div>
 @endsection

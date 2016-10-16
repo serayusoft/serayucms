@@ -3,10 +3,13 @@
 namespace App\Helpers;
 use Blade;
 use Carbon\Carbon;
+use App\Modules\ContentManager\Models\Options;
 class Helper
 {
+    private $options;
+
     public function __construct() {
- 
+        $this->options =  Options::all()->toArray();
     }
 
     public function menu($group = "main-menu")
@@ -48,5 +51,19 @@ class Helper
     public function bbcode($content){
         $bbcode = new BBCode();
         return $bbcode->toHTML($content);
+    }
+
+    public function option($keySearch){
+        $result = null;
+        foreach ($this->options as $value) {
+            if($value['name'] == $keySearch){
+                $result = $value['value'];
+            }
+        }
+        return $result;
+    }
+
+    public function appTitle($title){
+        return ($title == "") ? $this->option("site_title") : $title." - ".$this->option("site_title");
     }
 }

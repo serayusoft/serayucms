@@ -14,7 +14,22 @@ use App\Facades\Theme;
 class PostController extends Controller
 {
     public function index(){
-    	return view(Theme::active().'.post.index');
+        $res = array();
+        $data = Articles::where('post_type','post')->orderBy('id', 'desc')->get();
+       
+        foreach ($data as $value) {
+            $res[] = [
+                'id'=>$value->id,
+                'excerpt'=>$value->post_excerpt,
+                'title'=>$value->post_title,
+                'created'=>$value->created_at,
+                'content'=>$value->post_content,
+                'image'=>$value->getMetaValue('featured_img'),
+            ];
+        }
+        return response()->json(['datas' => $res]);
+    	//return view(Theme::active().'.post.index');
+       
     }
 
     public function view($slug){

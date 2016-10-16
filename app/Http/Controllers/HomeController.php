@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use Illuminate\Http\Request;
-use App\Facades\Theme;
+use Theme;
+use App\Modules\ContentManager\Models\Articles;
 class HomeController extends Controller
 {
     /**
@@ -14,11 +15,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view(Theme::frontpage());
-    }
-
-    public function test()
-    {
-        return "jadi";
+        $blog = Articles::where('post_type','post')->where('post_status','publish')->orderBy('id', 'desc')->paginate(10);
+        return view(Theme::frontpage(),['blog'=>$blog]);
     }
 }

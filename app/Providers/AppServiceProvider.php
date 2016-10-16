@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Blade;
+use View;
+use Helper;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -21,6 +23,8 @@ class AppServiceProvider extends ServiceProvider
         Blade::directive('endpushonce', function ($expression) {
             return '<?php $__env->stopPush(); endif; ?>';
         });
+
+        View::share('appTitle', "");
     }
 
     /**

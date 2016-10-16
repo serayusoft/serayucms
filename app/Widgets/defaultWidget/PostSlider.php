@@ -27,11 +27,11 @@ class PostSlider extends BaseWidget
             case 'featured-post':
                 $model = Articles::whereHas('meta', function($q){
                     $q->where("meta_key","featured_post")->where("meta_value","on");
-                })->get();
+                })->where('post_status','publish')->get();
                 break;
 
             case 'recent-post':
-                $model = Articles::where('post_type','post')->orderby('id', 'desc')->get();
+                $model = Articles::where('post_type','post')->where('post_status','publish')->orderby('id', 'desc')->get();
                 break;    
             
             default:

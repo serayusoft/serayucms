@@ -101,6 +101,8 @@ class MenuController extends Controller
         $model->post_name = str_slug($request->label,"-");
         $model->post_title = $request->label;
         $model->menu_group = $request->group;
+        $model->post_mime_type = "nav-menu";
+        $model->comment_status = "close";
         $model->save();
         $meta = array(
 		    array('post_id'=>$model->id, 'meta_key'=> '_nav_item_parent','meta_value'=> ""),
@@ -124,6 +126,8 @@ class MenuController extends Controller
             $model->post_name = str_slug($value["label"],"-");
             $model->post_title = $value["label"];
             $model->menu_group = $request->group;
+            $model->post_mime_type = "nav-menu";
+            $model->comment_status = "close";
             $model->save();
             $meta = array(
                 array('post_id'=>$model->id, 'meta_key'=> '_nav_item_parent','meta_value'=> ""),
