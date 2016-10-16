@@ -57,6 +57,7 @@ class PostController extends Controller
         $model->post_type = "post";
         $model->post_name = str_slug($request->post_title,"-");
         $model->post_title = $request->post_title;
+        $model->comment_status = $request->comment_status;
         $model->post_content = $model->cleanContent($request->post_content);
         $model->post_excerpt = $model->cleanContent($request->post_excerpt);
         $model->post_status = $request->status;
@@ -124,6 +125,7 @@ class PostController extends Controller
         $model->post_type = "post";
         $model->post_name = str_slug($request->post_title,"-");
         $model->post_title = $request->post_title;
+        $model->comment_status = $request->comment_status;
         $model->post_content = $model->cleanContent($request->post_content);
         $model->post_excerpt = $model->cleanContent($request->post_excerpt);
         $model->post_status = $request->status;

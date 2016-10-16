@@ -55,6 +55,12 @@
           </select>
         </li>
         @endif 
+        <li class="list-group-item">
+          <select name="comment_status" class="form-control">
+            <option value="open">Open Comment</option>
+            <option value="close">Close Comment</option>
+          </select>
+        </li>
       </ul>
     </div>
     <div class="featured-post">
