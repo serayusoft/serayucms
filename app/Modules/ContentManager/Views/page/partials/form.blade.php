@@ -30,6 +30,15 @@
             <option value="Draft">Draft</option>
           </select>
         </li>
+        <li class="list-group-item">
+          Comment
+        </li>
+        <li class="list-group-item">
+          <select name="comment_status" class="form-control">
+            <option value="close">Comment Close</option>
+            <option value="open">Comment Open</option>
+          </select>
+        </li>
       </ul>
     </div>
     <div class="panel panel-default">
