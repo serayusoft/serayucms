@@ -32,10 +32,10 @@ class WidgetTableSeeder extends Seeder
             ],
             [
                 'group_id' => 2,
-                'class_name' => 'App\Widgets\defaultWidget\TagsWidget',
+                'class_name' => 'App\Widgets\defaultWidget\RecentPostWidget',
                 'options' => serialize([
                     'baseID'=>str_random(10),
-                    'title'=>'Widget Tags',
+                    'title'=>'Recent Post',
                     ]),
                 'order' => 2,
             ],

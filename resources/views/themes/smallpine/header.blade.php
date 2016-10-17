@@ -27,7 +27,7 @@
         }
     </style>
 </head>
-<body id="app-layout" class="home blog custom-background hfeed CStyle8 SStyle1 HStyle1 boxed">
+<body id="app-layout" class="home blog custom-background hfeed CStyle8 HStyle1 boxed">
     <div id="page" class="site">
     <header id="sr-header">
         <div class="topbar fixed">

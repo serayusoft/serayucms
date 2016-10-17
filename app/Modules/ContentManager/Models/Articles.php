@@ -12,6 +12,7 @@ class Articles extends Model
      * @var string
      */
     protected $table = 'posts';
+    protected $fillable = ['post_hit'];
 
     public function user()
     {

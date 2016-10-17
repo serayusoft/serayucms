@@ -1,6 +1,7 @@
 @extends(Theme::active().'.main')
 
 @section('content')
+<div class="SStyle2">
 <article id="post-{{$model->id}}" class="post-{{$model->id}} post">
   <div class="post-inner">
     <header class="entry-header">
@@ -40,6 +41,14 @@
     </footer><!-- .entry-footer -->
   </div>
 </article><!-- #post-## -->
+<div class="row">
+  <div class="col-md-6">
+    @include('ContentManager::post.partials.prevpost')
+  </div>
+  <div class="col-md-6">
+    @include('ContentManager::post.partials.nextpost')
+  </div>
+</div>
 @if($model->comment_status == "open")
 @include('ContentManager::partials.errormessage')
 <h2 id="comments" class="page-header">Comments</h2>
@@ -77,5 +86,6 @@
     @include(Theme::active().'.post.comments')
 </section>
 @endif
+</div>
 @endsection
 

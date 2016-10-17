@@ -15,7 +15,7 @@ class PostsTableSeeder extends Seeder
 
         $categoryLimit = 4;
         $postLimit = 20;
-
+        $date = Carbon::now()->format('Y-m-d H:i:s');
 
         for($z = 0; $z < $categoryLimit; $z++){
         	$titleCategory = $faker->word();
@@ -37,8 +37,8 @@ class PostsTableSeeder extends Seeder
 	            'post_title' => $title,
 	            'post_name' => str_slug($title),
 	            'post_type' => "post",
-	            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-	            'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+	            'created_at' => $date,
+	            'updated_at' => $date,
             	]
         	);
 
@@ -56,5 +56,45 @@ class PostsTableSeeder extends Seeder
             	]
         	);
         }
+
+        //----Seed menu-----
+        $idMenu = DB::table('posts')->insertGetId(
+            [
+            'post_author' => 1,
+            'post_content' => "",
+            'post_title' => "Home",
+            'post_name' => 'home',
+            'post_type' => "nav-menu",
+            'comment_status' => "close",
+            'menu_group' => "main-menu",
+            'post_mime_type' => 'nav-menu',
+            'created_at' => $date,
+            'updated_at' => $date,
+            ]
+        );
+
+        DB::table('post_meta')->insert(
+            [
+            'post_id' => $idMenu,
+            'meta_key' => "_nav_item_parent",
+            'meta_value' => "",
+            ]
+        );
+
+        DB::table('post_meta')->insert(
+            [
+            'post_id' => $idMenu,
+            'meta_key' => "_nav_item_url",
+            'meta_value' => url()->full(),
+            ]
+        );
+
+        DB::table('post_meta')->insert(
+            [
+            'post_id' => $idMenu,
+            'meta_key' => "_nav_item_type",
+            'meta_value' => "home",
+            ]
+        );
     }
 }

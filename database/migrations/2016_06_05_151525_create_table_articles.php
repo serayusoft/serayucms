@@ -27,6 +27,7 @@ class CreateTableArticles extends Migration
             $table->integer('menu_order')->default(0);
             $table->string('menu_group');
             $table->string('post_type',20);
+            $table->integer('post_hit')->default(0);
             $table->string('post_mime_type',200)->default("post");
             $table->timestamps();
             $table->foreign('post_author')->references('id')->on('users')->onDelete('cascade');

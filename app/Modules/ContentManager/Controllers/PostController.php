@@ -89,8 +89,18 @@ class PostController extends Controller
     public function show($slug)
     {
         $model = Articles::where("post_name",$slug)->where("post_type","post")->where('post_status','publish')->firstOrFail();
+        $model->post_hit = $model->post_hit+1;
+        $model->save();
+        $prevPost = Articles::where('id', '<', $model->id)->where("post_type","post")->where('post_status','publish')->orderBy("id","desc")->first();
+        $nextPost = Articles::where('id', '>', $model->id)->where("post_type","post")->where('post_status','publish')->orderBy("id","asc")->first();
         $viewTheme = Theme::active().'.post.view';
-        return view()->exists($viewTheme) ? view($viewTheme,['model'=>$model,'appTitle'=>$model->post_title]) : view("ContentManager::post.show",['model'=>$model,'appTitle'=>$model->post_title]);
+        $shared = [
+            'model'=>$model,
+            'appTitle'=>$model->post_title,
+            'nextPost'=>$nextPost,
+            'prevPost'=>$prevPost,
+        ];
+        return view()->exists($viewTheme) ? view($viewTheme,$shared) : view("ContentManager::post.show",$shared);
     }
 
     /**

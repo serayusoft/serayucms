@@ -89,7 +89,7 @@ class ThemeMetaTableSeeder extends Seeder
                                 'none-sidebar'=>'None Sidebar',
                                 'center-content'=>'Center Content',
                             ],
-                            'value'=>'none-sidebar',
+                            'value'=>'right-sidebar',
                             'label'=>'Layout Style',
                             'group'=>'layouts'
                         ],
