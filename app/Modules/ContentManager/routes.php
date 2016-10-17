@@ -2,7 +2,6 @@
 Route::group(['middleware' => ['web']], function () {
 	Route::post($this->admin,['as' => $this->admin.'.login', 'uses' => 'App\Modules\ContentManager\Controllers\AuthController@login']);
 	Route::get($this->admin,['as' => $this->admin.'.showlogin', 'uses' => 'App\Modules\ContentManager\Controllers\AuthController@showLoginForm']);
-	Route::get($this->admin.'/logout',['as' => $this->admin.'.logout', 'uses' => 'App\Modules\ContentManager\Controllers\AuthController@logout']);
 
 	Route::get('/blog', 'App\Modules\ContentManager\Controllers\PostController@blog');
 	Route::get('/{slug?}.html', 'App\Modules\ContentManager\Controllers\PageController@show');
@@ -13,6 +12,8 @@ Route::group(['middleware' => ['web']], function () {
 });
 
 Route::group(['prefix' => $this->admin, 'middleware' => ['web','admin'], 'namespace' => 'App\Modules\ContentManager\Controllers'], function () {
+	Route::get('logout',['as' => $this->admin.'.logout', 'uses' => 'AuthController@logout']);
+
 	Route::get('contentManager/index', ['as' => $this->admin.'.contentManager.index','uses' => 'DefaultController@index']);
 	Route::get('contentManager/imageTiny', ['as' => $this->admin.'.contentManager.imageTiny', 'uses' => 'DefaultController@imageTiny']);
 	Route::get('contentManager/post/tagsJson', ['as' => $this->admin.'.contentManager.post.tags', 'uses' => 'PostController@tagsJson']);
@@ -22,15 +23,13 @@ Route::group(['prefix' => $this->admin, 'middleware' => ['web','admin'], 'namesp
 	Route::post('contentManager/media/store', ['as' => $this->admin.'.contentManager.media.store', 'uses' => 'MediaController@store']);
 	Route::get('contentManager/media/images', ['as' => $this->admin.'.contentManager.media.images', 'uses' => 'MediaController@images']);
 	Route::delete('contentManager/media/delete/{id?}', ['as' => $this->admin.'.contentManager.media.destroy', 'uses' => 'MediaController@destroy']);
-
 	Route::get('contentManager/theme/install',['as' => $this->admin.'.contentManager.theme.install', 'uses' => 'ThemeController@install']);
+
 	//-----Theme Manager------
 	Route::get('contentManager/theme', ['as' => $this->admin.'.contentManager.theme', 'uses' => 'ThemeController@index']);
 	Route::get('contentManager/theme/{id?}', ['as' => $this->admin.'.contentManager.theme.view', 'uses' => 'ThemeController@view']);
 	Route::get('contentManager/theme/{id?}/active', ['as' => $this->admin.'.contentManager.theme.active', 'uses' => 'ThemeController@active']);
 	Route::post('contentManager/theme', ['as' => $this->admin.'.contentManager.theme.update', 'uses' => 'ThemeController@update']);
-
-
 
 	//-----Setting-----
 	Route::get('contentManager/setting', ['as' => $this->admin.'.contentManager.setting', 'uses' => 'OptionsController@index']);

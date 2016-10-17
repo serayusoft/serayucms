@@ -49,6 +49,7 @@ class UsersController extends Controller
         $model->email = $request->email;
         $model->password = bcrypt($request->password);
         $model->description = $request->description;
+        $model->photo = $request->photo;
         $model->save();
         return redirect(Admin::StrURL('contentManager/user'));
     }
@@ -96,6 +97,7 @@ class UsersController extends Controller
         $model->name = $request->name;
         $model->email = $request->email;
         $model->description = $request->description;
+        $model->photo = $request->photo;
         $model->save();
         return redirect(Admin::StrURL('contentManager/user'));
     }

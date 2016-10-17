@@ -2,10 +2,19 @@
 
 @section('content')
 <div class="row">
-    <div class="col-md-12">
-        @include('ContentManager::partials.errormessage')
+    <div class="x_panel">
+    <div class="x_title">
+      <h2>Create User</h2>
+      <div class="clearfix"></div>
     </div>
-    @include('ContentManager::user.partials.form')
+    <div class="x_content">
+    	<div class="row">
+		    <div class="col-md-12">
+		        @include('ContentManager::partials.errormessage')
+		    </div>
+		    @include('ContentManager::user.partials.form')
+		</div>
+	</div>
 </div>
 @endsection
 

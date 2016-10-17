@@ -55,12 +55,21 @@
           </select>
         </li>
         @endif 
+        @if($model != "")
+        <li class="list-group-item">
+          <select name="comment_status" class="form-control">
+            <option {{ ($model->comment_status == "open") ? "selected" : "" }} value="open">Open Comment</option>
+            <option {{ ($model->comment_status == "close") ? "selected" : "" }} value="close">Close Comment</option>
+          </select>
+        </li>
+        @else
         <li class="list-group-item">
           <select name="comment_status" class="form-control">
             <option value="open">Open Comment</option>
             <option value="close">Close Comment</option>
           </select>
         </li>
+        @endif         
       </ul>
     </div>
     <div class="featured-post">
