@@ -21,7 +21,6 @@
       <div class="panel-heading">Publish</div>
       <div class="panel-body">
         <button type="submit" class="btn btn-success btn-block">Save</button>
-        
       </div>
       <ul class="list-group">
         <li class="list-group-item">

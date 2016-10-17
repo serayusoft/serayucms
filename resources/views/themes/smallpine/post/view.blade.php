@@ -25,7 +25,6 @@
           <span class="comments-link"><i class="fa fa-comment"></i> <a href="{{ $model->getUrl() }}">{{ $model->comments->count() }} Comment</a></span>   
         </div>  
       </div>
-      
     </header><!-- .entry-header -->
 
     <div class="entry-content">
@@ -41,41 +40,42 @@
     </footer><!-- .entry-footer -->
   </div>
 </article><!-- #post-## -->
+@if($model->comment_status == "open")
 @include('ContentManager::partials.errormessage')
 <h2 id="comments" class="page-header">Comments</h2>
-        <section class="comment-list">
-            <form method="POST" action="{{url('/'.$model->post_name.'/addcomment')}}">
-            {{ csrf_field() }}
-              <div class="row">
-                <div class="col-md-4">
-                  <div class="form-group">
-                    <label for="comment-name">Name *</label>
-                    <input type="text" name="comment_name" class="form-control" id="comment-name" placeholder="Name">
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="form-group">
-                    <label for="comment-email">Email *</label>
-                    <input type="text" name="comment_email" class="form-control" id="comment-email" placeholder="Email">
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="form-group">
-                    <label for="comment-website">Website</label>
-                    <input type="text" name="comment_website" class="form-control" id="comment-website" placeholder="Website">
-                  </div>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="comment-content">Comment *</label>
-                <textarea class="form-control" name="comment_content" id="comment-name" rows="9"></textarea>
-              </div>
-              <div class="text-left">
-                <button type="submit" class="btn btn-success">Submit</button>
-              </div>
-            </form>
-            @include(Theme::active().'.post.comments')
-      </section>
-
+<section class="comment-list">
+    <form method="POST" action="{{url('/'.$model->post_name.'/addcomment')}}">
+    {{ csrf_field() }}
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="comment-name">Name *</label>
+            <input type="text" name="comment_name" class="form-control" id="comment-name" placeholder="Name">
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="comment-email">Email *</label>
+            <input type="text" name="comment_email" class="form-control" id="comment-email" placeholder="Email">
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="comment-website">Website</label>
+            <input type="text" name="comment_website" class="form-control" id="comment-website" placeholder="Website">
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="comment-content">Comment *</label>
+        <textarea class="form-control" name="comment_content" id="comment-name" rows="9"></textarea>
+      </div>
+      <div class="text-left">
+        <button type="submit" class="btn btn-success">Submit</button>
+      </div>
+    </form>
+    @include(Theme::active().'.post.comments')
+</section>
+@endif
 @endsection
 
