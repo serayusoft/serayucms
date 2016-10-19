@@ -8,7 +8,16 @@
       <div class="clearfix"></div>
     </div>
     <div class="x_content">
-      <form action="Admin::route('contentManager.setting.update')" method="POST">
+    @include('ContentManager::partials.errormessage')
+    @if (session('status'))
+      <div class="alert alert-success">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <p><i class="fa fa-check"></i> {{ session('status') }}</p>
+      </div>
+    @endif
+      <form action="{{ Admin::route('contentManager.setting.update') }}" method="POST">
         {{ csrf_field() }}
         <div class="" role="tabpanel" data-example-id="togglable-tabs">
             <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
@@ -34,7 +43,7 @@
                     <label for="email_administrator">Email Administrator</label>
                     <input type="text" name="opt[email_administrator]" class="form-control" value="{{ $model['email_administrator'] }}" id="email_administrator" placeholder="Email Administrator">
                   </div>
-                  <button type="submit" class="btn btn-default">Submit</button>
+                  <button type="submit" class="btn btn-default">Save</button>
                 
               </div>
               <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="post-tab">
@@ -50,7 +59,7 @@
                     <label for="view_post_index">Post View</label>
                     <input type="text" name="opt[view_post_index]" class="form-control" value="{{ $model['view_post_index'] }}" id="view_post_index" placeholder="Site Tagline">
                   </div>
-                  <button type="submit" class="btn btn-default">Submit</button>
+                  <button type="submit" class="btn btn-default">Save</button>
 
               </div>
               <div role="tabpanel" class="tab-pane fade" id="tab_content3" aria-labelledby="media-tab">
@@ -100,7 +109,7 @@
                 </div>
                 
                 
-                  <button type="submit" class="btn btn-default">Submit</button>
+                  <button type="submit" class="btn btn-default">Save</button>
 
               </div>
             </div>

@@ -13,4 +13,5 @@ class Options extends Model
      */
     protected $table = 'options';
     public $timestamps = false;
+    protected $fillable = array('name','value');
 }
