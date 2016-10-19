@@ -15,10 +15,10 @@ class ThemeTableSeeder extends Seeder
         	[
 	            'name' => 'smallpine',
 	            'version' => '1.0',
-	            'author' => 'serayusoft',
-	            'author_url' => 'http://serayusoft.com',
+	            'author' => 'serayutheme',
+	            'author_url' => 'http://serayutheme.com',
 	            'description' => 'Default Theme',
-	            'image_preview' => 'preview.jpg',
+	            'image_preview' => 'Screenshot.png',
                 'status' => true,
             ]            
         ]);

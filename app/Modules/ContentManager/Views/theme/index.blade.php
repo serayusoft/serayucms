@@ -16,7 +16,7 @@
 				<div class="col-md-3">
 					<div class="thumbnail theme-item {{ $value['active'] == 1 ? 'active' : '' }}">
 		              <div class="image view view-first">
-		                <img style="width: 100%; display: block;" src="{{ url('/themes/'.$value->name) }}/{{ $value->image_preview }}" alt="image">
+		                <img style="width: 100%; display: block;" src="{{ url('/themes/'.$value->name) }}/images/{{ $value->image_preview }}" alt="image">
 		                <div class="mask">
 		                  <p>{{ $value->name }}</p>
 		                  <div class="tools tools-bottom">

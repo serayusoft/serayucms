@@ -22,7 +22,7 @@
 			@endif
              <div class="row">
 				<div class="col-md-4">
-					<img style="width: 100%; display: block;" src="{{ url('/themes/'.$model->name) }}/{{ $model->image_preview }}" alt="image">
+					<img style="width: 100%; display: block;" src="{{ url('/themes/'.$model->name) }}/images/{{ $model->image_preview }}" alt="image">
 				</div>
 				<div class="col-md-8">
 					<dl> 
